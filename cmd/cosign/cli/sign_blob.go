@@ -28,6 +28,7 @@ import (
 	"github.com/sigstore/cosign/pkg/cosign"
 	"github.com/sigstore/cosign/pkg/cosign/fulcio"
 	"github.com/sigstore/cosign/pkg/cosign/kms"
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 func SignBlob() *ffcli.Command {
@@ -124,7 +125,11 @@ func SignBlobCmd(ctx context.Context, keyPath, kmsVal, payloadPath string, b64 b
 			return nil, errors.Wrap(err, "generating cert")
 		}
 		fmt.Fprintln(os.Stderr, "Retrieving signed certificate...")
-		pemBytes, _, err := fulcio.GetCert(ctx, priv) // TODO: use the chain
+		mode := ""
+		if !terminal.IsTerminal(0) {
+			mode = "device"
+		}
+		pemBytes, _, err := fulcio.GetCert(ctx, priv, mode) // TODO: use the chain
 		if err != nil {
 			return nil, errors.Wrap(err, "retrieving cert")
 		}

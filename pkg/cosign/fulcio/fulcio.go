@@ -49,27 +49,29 @@ func fulcioServer() string {
 	return defaultFulcioAddress
 }
 
-type oidcFlow interface {
+type oidcConnector interface {
 	OIDConnect(string, string, string) (*oauthflow.OIDCIDToken, string, error)
 }
 
-type defaultFlow struct{}
+type realConnector struct {
+	flow oauthflow.TokenGetter
+}
 
-func (df *defaultFlow) OIDConnect(url, clientID, secret string) (*oauthflow.OIDCIDToken, string, error) {
-	return oauthflow.OIDConnect(url, clientID, secret)
+func (rf *realConnector) OIDConnect(url, clientID, secret string) (*oauthflow.OIDCIDToken, string, error) {
+	return oauthflow.OIDConnect(url, clientID, secret, rf.flow)
 }
 
 type signingCertProvider interface {
 	SigningCert(params *operations.SigningCertParams, authInfo runtime.ClientAuthInfoWriter) (*operations.SigningCertCreated, error)
 }
 
-func getCertForOauthID(priv *ecdsa.PrivateKey, scp signingCertProvider, flow oidcFlow) (string, string, error) {
+func getCertForOauthID(priv *ecdsa.PrivateKey, scp signingCertProvider, connector oidcConnector) (string, string, error) {
 	pubBytes, err := x509.MarshalPKIXPublicKey(&priv.PublicKey)
 	if err != nil {
 		return "", "", err
 	}
 
-	tok, email, err := flow.OIDConnect("https://oauth2.sigstore.dev/auth", "sigstore", "")
+	tok, email, err := connector.OIDConnect("https://oauth2.sigstore.dev/auth", "sigstore", "")
 	if err != nil {
 		return "", "", err
 	}
@@ -108,15 +110,22 @@ func getCertForOauthID(priv *ecdsa.PrivateKey, scp signingCertProvider, flow oid
 }
 
 // GetCert returns the PEM-encoded signature of the OIDC identity returned as part of an interactive oauth2 flow plus the PEM-encoded cert chain.
-func GetCert(ctx context.Context, priv *ecdsa.PrivateKey) (string, string, error) {
+func GetCert(ctx context.Context, priv *ecdsa.PrivateKey, flow string) (string, string, error) {
 	fcli, err := app.GetFulcioClient(fulcioServer())
 	if err != nil {
 		return "", "", err
 	}
 
-	flow := &defaultFlow{}
+	c := &realConnector{
+		flow: oauthflow.DefaultIDTokenGetter,
+	}
+	switch flow {
+	case "device":
+		c.flow = oauthflow.NewDeviceFlowTokenGetter(
+			"https://oauth2.sigstore.dev/auth", oauthflow.SigstoreDeviceURL, oauthflow.SigstoreTokenURL)
+	}
 
-	return getCertForOauthID(priv, fcli.Operations, flow)
+	return getCertForOauthID(priv, fcli.Operations, c)
 }
 
 var Roots *x509.CertPool

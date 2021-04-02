@@ -161,6 +161,8 @@ github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/dgrijalva/jwt-go v3.2.0+incompatible/go.mod h1:E3ru+11k8xSBh+hMPgOLZmtrrCbhqsmaPHjLKYnJCaQ=
 github.com/dgryski/go-sip13 v0.0.0-20181026042036-e10d5fee7954/go.mod h1:vAd38F8PWV+bWy6jNmig1y/TA+kYO4g3RSRF0IAv0no=
+github.com/dlorenc/sigstore v0.0.0-20210402150230-349d79b9374a h1:ESg79m7YwutbD9bWmernlQPwYSomdb9uMNitQj5aj9c=
+github.com/dlorenc/sigstore v0.0.0-20210402150230-349d79b9374a/go.mod h1:601q5qeYN8M6U0pJBKePS/tCNVMl1a5TVt+45yoo9Ak=
 github.com/docker/cli v0.0.0-20191017083524-a8ff7f821017 h1:2HQmlpI3yI9deH18Q6xiSOIjXD4sLI55Y/gfpa8/558=
 github.com/docker/cli v0.0.0-20191017083524-a8ff7f821017/go.mod h1:JLrzqnKDaYBop7H2jaqPtU4hHvMKP+vjCwu2uszcLI8=
 github.com/docker/distribution v2.7.1+incompatible h1:a5mlkVzth6W5A4fOsS3D2EO5BUmsJpcB+cRlLU7cSug=
@@ -200,13 +202,13 @@ github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMo
 github.com/fsnotify/fsnotify v1.4.9 h1:hsms1Qyu0jgnwNXIxa+/V/PDsU6CfLf6CNO8H7IWoS4=
 github.com/fsnotify/fsnotify v1.4.9/go.mod h1:znqG4EE+3YCdAaPaxE2ZRY/06pZUdp0tY4IgpuI1SZQ=
 github.com/fullstorydev/grpcurl v1.6.0/go.mod h1:ZQ+ayqbKMJNhzLmbpCiurTVlaK2M/3nqZCxaQ2Ze/sM=
+github.com/gabriel-vasile/mimetype v1.2.0 h1:A6z5J8OhjiWFV91sQ3dMI8apYu/tvP9keDaMM3Xu6p4=
 github.com/gabriel-vasile/mimetype v1.2.0/go.mod h1:6CDPel/o/3/s4+bp6kIbsWATq8pmgOisOPG40CJa6To=
 github.com/ghodss/yaml v0.0.0-20150909031657-73d445a93680/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/ghodss/yaml v1.0.0 h1:wQHKEahhL6wmXdzwWG11gIVCkOv05bNOh+Rxn0yngAk=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/globalsign/mgo v0.0.0-20180905125535-1ca0a4f7cbcb/go.mod h1:xkRDCp4j0OGD1HRkm4kmhM+pmpv3AKq5SU7GMg4oO/Q=
 github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8/go.mod h1:xkRDCp4j0OGD1HRkm4kmhM+pmpv3AKq5SU7GMg4oO/Q=
-github.com/go-chi/chi v1.5.4/go.mod h1:uaf8YgoFazUOkPBG7fxPftUylNumIev9awIWOENIuEg=
 github.com/go-chi/chi v4.1.2+incompatible h1:fGFk2Gmi/YKXk0OmGfBh0WgmN3XB8lVnEyNz34tQRec=
 github.com/go-chi/chi v4.1.2+incompatible/go.mod h1:eB3wogJHnLi3x/kFX2A+IbTBlXxmMeXJVKy9tTv1XzQ=
 github.com/go-critic/go-critic v0.3.5-0.20190526074819-1df300866540/go.mod h1:+sE8vrLDS2M0pZkBk0wy6+nLdKexVDrl/jBqQOTDThA=
@@ -803,8 +805,10 @@ github.com/sigstore/fulcio v0.0.0-20210331081203-d8ffef02dff6 h1:2Z5bJe5SGrvf0MI
 github.com/sigstore/fulcio v0.0.0-20210331081203-d8ffef02dff6/go.mod h1:+K9obpy5j3vwcsJYcm6aRjCo8TFawGt1I5IfndU+9Yo=
 github.com/sigstore/rekor v0.1.1-0.20210228052401-f0b66bf3835c h1:IvJiUKPAwRURE1ol/38gNCDNKmQox1jJ6br30LRB354=
 github.com/sigstore/rekor v0.1.1-0.20210228052401-f0b66bf3835c/go.mod h1:kaFX2YwaUsao+kA5AHJboTZwQ8mOVIyWuj6UNARX6ac=
-github.com/sigstore/sigstore v0.0.0-20210329185113-57367f943f99 h1:h5y+wuqKC/iXU74LjP2qn+/mhk1CFLMg3JPuId2hu3U=
-github.com/sigstore/sigstore v0.0.0-20210329185113-57367f943f99/go.mod h1:qyfdTPMP08lwedrRS68RFA28HInCtshPfdiGzWzg4Jk=
+github.com/sigstore/rekor v0.1.1 h1:KCMKXwzpwnRwhxQojpFFEOMP4Hepp4exncv4EzVUIFY=
+github.com/sigstore/rekor v0.1.1/go.mod h1:b+T8TvGKWgaFbtPRQgF/gXjbj/R9HdJ5lA93cnGT3Sc=
+github.com/sigstore/sigstore v0.0.0-20210403143206-ca33526ed5a9 h1:PvsW9jemnEioAeQx+GUuUl5ObngV0mHxylxpcghDvZ4=
+github.com/sigstore/sigstore v0.0.0-20210403143206-ca33526ed5a9/go.mod h1:4dqR+PHxqtsyE0kSSHslOM8i8YgtSnfIEt4hFTfg7AM=
 github.com/sirupsen/logrus v1.0.5/go.mod h1:pMByvHTf9Beacp5x1UXfOR9xyW/9antXMhjMPG0dEzc=
 github.com/sirupsen/logrus v1.2.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
 github.com/sirupsen/logrus v1.4.0/go.mod h1:LxeOpSwHxABJmUn/MG1IvRgCAasNZTLOkJPxbbu5VWo=
@@ -922,7 +926,6 @@ go.mongodb.org/mongo-driver v1.3.4/go.mod h1:MSWZXKOynuguX+JSvwP8i+58jYCXxbia8HS
 go.mongodb.org/mongo-driver v1.4.3/go.mod h1:WcMNYLx/IlOxLe6JRJiv2uXuCz6zBLndR4SoGjYphSc=
 go.mongodb.org/mongo-driver v1.4.4/go.mod h1:WcMNYLx/IlOxLe6JRJiv2uXuCz6zBLndR4SoGjYphSc=
 go.mongodb.org/mongo-driver v1.4.6/go.mod h1:WcMNYLx/IlOxLe6JRJiv2uXuCz6zBLndR4SoGjYphSc=
-go.mongodb.org/mongo-driver v1.5.0/go.mod h1:boiGPFqyBs5R0R5qf2ErokGRekMfwn+MqKaUyHs7wy0=
 go.mongodb.org/mongo-driver v1.5.1 h1:9nOVLGDfOaZ9R0tBumx/BcuqkbFpyTCU2r/Po7A2azI=
 go.mongodb.org/mongo-driver v1.5.1/go.mod h1:gRXCHX4Jo7J0IJ1oDQyUxF7jfy19UfxniMS4xxMmUqw=
 go.opencensus.io v0.20.1/go.mod h1:6WKK9ahsWS3RSO+PY9ZHZUfv2irvY6gN279GOPZjmmk=
@@ -1154,6 +1157,7 @@ golang.org/x/sys v0.0.0-20210113181707-4bcb84eeeb78/go.mod h1:h1NjWce9XRLGQEsW7w
 golang.org/x/sys v0.0.0-20210119212857-b64e53b001e4/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20210220050731-9a76102bfb43/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
+golang.org/x/sys v0.0.0-20210301091718-77cc2087c03b/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20210305230114-8fe3ee5dd75b/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20210309074719-68d13333faf2/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=
 golang.org/x/sys v0.0.0-20210314195730-07df6a141424/go.mod h1:h1NjWce9XRLGQEsW7wpKNCjG9DtNlClVuFLEZdDNbEs=

@@ -25,6 +25,7 @@ import (
 	"strings"
 
 	"github.com/sigstore/cosign/pkg/cosign/fulcio"
+	"golang.org/x/crypto/ssh/terminal"
 
 	"github.com/google/go-containerregistry/pkg/authn"
 	"github.com/google/go-containerregistry/pkg/name"
@@ -176,7 +177,12 @@ func SignCmd(ctx context.Context, keyPath string,
 		}
 		signer = cosign.WithECDSAKey(priv)
 		fmt.Fprintln(os.Stderr, "Retrieving signed certificate...")
-		cert, chain, err = fulcio.GetCert(ctx, priv) // TODO, use the chain.
+
+		mode := ""
+		if !terminal.IsTerminal(0) {
+			mode = "device"
+		}
+		cert, chain, err = fulcio.GetCert(ctx, priv, mode) // TODO, use the chain.
 		if err != nil {
 			return errors.Wrap(err, "retrieving cert")
 		}
